@@ -9,79 +9,49 @@ document.addEventListener('click', () => {
     })
   })
 })
-const formInput = document.querySelector('.form-registration')
-
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
-  const passwordInput = document.getElementById('password')
-  const confirmPasswordInput = document.getElementById('confirmPassword')
-  const messageSpan = document.getElementById('message')
+  checkPasswordMatch()
+})
+const formInput = document.querySelector('.form-registration')
+formInput.addEventListener('submit', (e) => {
+  e.preventDefault()
+  checkPasswordMatch()
+  const passwordInput = formInput.querySelector('#password')
+  const confirmPasswordInput = formInput.querySelector('#confirmPassword')
+  const messageSpan = formInput.querySelector('#message')
+  messageSpan.textContent = ''
+  passwordInput.value = ''
+  confirmPasswordInput.value = ''
+})
 
-  function checkPasswordMatch() {
-    const password = passwordInput.value
-    const confirmPassword = confirmPasswordInput.value
+function checkPasswordMatch() {
+  const formInput = document.querySelector('.form-registration')
+  const passwordInput = formInput.querySelector('#password')
+  const confirmPasswordInput = formInput.querySelector('#confirmPassword')
+  const messageSpan = formInput.querySelector('#message')
+  const submitBtn = formInput.querySelector('.btn-submit')
 
-    if (password === '' || confirmPassword === '') {
-      messageSpan.textContent = ''
-      messageSpan.className = 'hidden'
-    } else if (password === confirmPassword) {
-      messageSpan.textContent = 'Passwords match!'
-      messageSpan.className = 'match'
-    } else {
-      messageSpan.textContent = 'Passwords do not match.'
-      messageSpan.className = 'no-match'
-    }
+  const password = passwordInput.value
+  const confirmPassword = confirmPasswordInput.value
+  const registrationFormData = {
+    password: password,
+    confirmPassword: confirmPassword,
   }
+  if (password === '' || confirmPassword === '') {
+    messageSpan.textContent = ''
+    submitBtn.disabled = true
+    // messageSpan.className = 'hidden'
+  } else if (password === confirmPassword) {
+    messageSpan.textContent = 'Passwords match!'
+    messageSpan.className = 'match'
+    submitBtn.disabled = false
+  } else {
+    messageSpan.textContent = 'Passwords do not match.'
+    messageSpan.className = 'no-match'
+  }
+  console.log(registrationFormData)
 
   passwordInput.addEventListener('input', checkPasswordMatch)
   confirmPasswordInput.addEventListener('input', checkPasswordMatch)
-})
-
-// formInput.addEventListener('submit', (e) => {
-//   e.preventDefault()
-//   // const name = formInput.querySelector('#name')
-//   // const username = formInput.querySelector('#username')
-//   // const email = formInput.querySelector('#email')
-//   const password = formInput.querySelector('#password')
-//   const confirmpassword = formInput.querySelector('#confirmpassword')
-
-//   // const nameValue = name.value
-//   // const usernameValue = username.value
-//   // const emailValue = email.value
-//   const passwordValue = password.value.trim()
-//   const confirmpasswordValue = confirmpassword.value.trim()
-
-//   const message = document.querySelector('.message')
-
-//   const registrationData = {
-//     // name: nameValue,
-//     // username: usernameValue,
-//     // email: emailValue,
-//     password: passwordValue,
-//     confirmpassword: confirmpasswordValue,
-//   }
-
-//   if (passwordValue !== confirmpasswordValue) {
-//     message.classList.add('passMatch')
-//   }
-//   if (passwordValue === confirmpasswordValue) {
-//     console.log('rgistration: ', registrationData)
-//     // name.value = ''
-//     // username.value = ''
-//     // email.value = ''
-//     // message.textContent = 'Passwords match!'
-//     message.classList.remove('passMatch')
-//     message.classList.add('match')
-//     password.value = ''
-//     confirmpassword.value = ''
-//     // message.classList.add('hidden')
-//   } else {
-//     // If passwords do not match, show error message
-//     message.textContent = 'Passwords do not match. Please try again.'
-//     message.classList.remove('hidden')
-//     message.classList.remove('match') // Remove match class if present
-//   }
-//   if (password.v === confirmpasswordValue.textContent) {
-//     message.textContent = 'Passwords match!'
-//   }
-// })
+}

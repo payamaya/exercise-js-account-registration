@@ -61,7 +61,7 @@ label {
   border-style: none;
   border-radius: var(--small-radius);
 }
-.btn:disabled {
+.btn-submit:disabled {
   background-color: gray;
 }
 input:focus {
