@@ -1,0 +1,57 @@
+:root {
+  --default-padding: 1rem;
+  --small-padding: 0.5rem;
+  --default-radius: 0.4rem;
+  --small-radius: 0.2rem;
+  --color: aliceblue;
+}
+body {
+  background: rgb(0, 0, 174);
+}
+.registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-registration {
+  padding: var(--default-padding);
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 3rem;
+}
+.form-wrapper {
+  width: 400px;
+  background-color: #fff;
+  border-radius: var(--small-radius);
+}
+.header {
+  color: var(--color);
+}
+input {
+  border-radius: var(--small-radius);
+  padding: var(--small-padding);
+  color: rgb(0, 32, 128);
+  border: 1px solid var(--color);
+}
+::placeholder {
+  color: rgb(156, 156, 156);
+}
+
+label {
+  margin-block: var(--default-padding);
+}
+
+.btn {
+  margin-top: var(--default-padding);
+  padding: var(--small-padding);
+  background-color: rgb(26, 168, 26);
+  color: var(--white);
+  font-size: 1rem;
+  border-style: none;
+  border-radius: var(--small-radius);
+}
+input:focus {
+  border-style: none;
+  outline-color: rgb(181, 196, 245);
+}
