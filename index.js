@@ -3,63 +3,85 @@ document.addEventListener('click', () => {
   Array.from(labels).forEach((label) => {
     label.addEventListener('click', () => {
       const input = label.nextElementSibling
-
       if (input && input.tagName === 'INPUT') {
         input.focus()
       }
     })
   })
 })
-
-// const formSubmit = document.querySelector('.form-registration')
-// // Password matching
-
-// const form = document.querySelector('.form-registration')
-// const password = document.querySelector('#password')
-// const confirmPassword = document.querySelector('#confirmPassword')
-// const message = document.querySelector('.hidden')
-
-// function checkPassword(e) {
-//   e.preventDefault()
-//   if (password < 8) {
-//     alert('at least 8 charachter')
-//   }
-//   if (password.value === confirmPassword.value) {
-//     alert(password.value)
-//   } else if (password.value !== confirmPassword.value) {
-//     message.classList.add('block')
-//   }
-// }
-
-// form.addEventListener('submit', checkPassword)
-
 const formInput = document.querySelector('.form-registration')
 
-formInput.addEventListener('submit', (e) => {
-  e.preventDefault()
-  const name = formInput.querySelector('#name')
-  const username = formInput.querySelector('#username')
-  const email = formInput.querySelector('#email')
-  const password = formInput.querySelector('#password')
-  const confirmpassword = formInput.querySelector('#confirmpassword')
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+  const passwordInput = document.getElementById('password')
+  const confirmPasswordInput = document.getElementById('confirmPassword')
+  const messageSpan = document.getElementById('message')
 
-  const nameValue = name.value
-  const usernameValue = username.value
-  const emailValue = email.value
-  const passwordValue = password.value
-  const confirmpasswordValue = confirmpassword.value
+  function checkPasswordMatch() {
+    const password = passwordInput.value
+    const confirmPassword = confirmPasswordInput.value
 
-  const registrationData = {
-    name: nameValue,
-    username: usernameValue,
-    email: emailValue,
-    password: passwordValue,
-    confirmpassword: confirmpasswordValue,
+    if (password === '' || confirmPassword === '') {
+      messageSpan.textContent = ''
+      messageSpan.className = 'hidden'
+    } else if (password === confirmPassword) {
+      messageSpan.textContent = 'Passwords match!'
+      messageSpan.className = 'match'
+    } else {
+      messageSpan.textContent = 'Passwords do not match.'
+      messageSpan.className = 'no-match'
+    }
   }
-  console.log('rgistration: ', registrationData)
-  name.value = ''
-  username.value = ''
-  email.value = ''
-  password.value = ''
-  confirmpassword.value = ''
+
+  passwordInput.addEventListener('input', checkPasswordMatch)
+  confirmPasswordInput.addEventListener('input', checkPasswordMatch)
 })
+
+// formInput.addEventListener('submit', (e) => {
+//   e.preventDefault()
+//   // const name = formInput.querySelector('#name')
+//   // const username = formInput.querySelector('#username')
+//   // const email = formInput.querySelector('#email')
+//   const password = formInput.querySelector('#password')
+//   const confirmpassword = formInput.querySelector('#confirmpassword')
+
+//   // const nameValue = name.value
+//   // const usernameValue = username.value
+//   // const emailValue = email.value
+//   const passwordValue = password.value.trim()
+//   const confirmpasswordValue = confirmpassword.value.trim()
+
+//   const message = document.querySelector('.message')
+
+//   const registrationData = {
+//     // name: nameValue,
+//     // username: usernameValue,
+//     // email: emailValue,
+//     password: passwordValue,
+//     confirmpassword: confirmpasswordValue,
+//   }
+
+//   if (passwordValue !== confirmpasswordValue) {
+//     message.classList.add('passMatch')
+//   }
+//   if (passwordValue === confirmpasswordValue) {
+//     console.log('rgistration: ', registrationData)
+//     // name.value = ''
+//     // username.value = ''
+//     // email.value = ''
+//     // message.textContent = 'Passwords match!'
+//     message.classList.remove('passMatch')
+//     message.classList.add('match')
+//     password.value = ''
+//     confirmpassword.value = ''
+//     // message.classList.add('hidden')
+//   } else {
+//     // If passwords do not match, show error message
+//     message.textContent = 'Passwords do not match. Please try again.'
+//     message.classList.remove('hidden')
+//     message.classList.remove('match') // Remove match class if present
+//   }
+//   if (password.v === confirmpasswordValue.textContent) {
+//     message.textContent = 'Passwords match!'
+//   }
+// })
