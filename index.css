@@ -55,3 +55,11 @@ input:focus {
   border-style: none;
   outline-color: rgb(181, 196, 245);
 }
+
+.hidden {
+  display: none;
+}
+.block {
+  display: block;
+  color: red;
+}

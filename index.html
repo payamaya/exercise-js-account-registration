@@ -21,9 +21,13 @@
         <label class="email">Email</label>
         <input type="email" class="email" placeholder="email" name="email" id="email" required>
         <label>Password</label>
-        <input type="password" placeholder="password" name="password" id="password" required>
-        <label>Confirm</label>
-        <input type="password" placeholder="Confirm password" name="confirm" id="confirm" required>
+        <input type="password" minlength="8" placeholder="password" name="password" id="password" required>
+        <span class="hidden">Password must be at least 8 characters
+          long.</span>
+        <label>Confirm Password</label>
+        <input type="password" minlength="8" placeholder="Confirm password" name="confirmPassword" id="confirmpassword"
+          required>
+        <span class="hidden">Password do not matches</span>
         <button type="submit" class="btn btn-submit">Sign up</button>
       </form>
     </div>
