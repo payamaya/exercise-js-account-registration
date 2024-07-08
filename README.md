@@ -37,3 +37,4 @@ _( The image below is just AN EXAMPLE on how it CAN look! You have free reins on
 
 <figure style="text-align: center;"><img src="example-img.png">
 <figcaption>Example</figcaption></figure>
+# exercise-js-account-registration
