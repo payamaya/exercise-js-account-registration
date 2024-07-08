@@ -20,6 +20,16 @@ formInput.addEventListener('submit', (e) => {
   const passwordInput = formInput.querySelector('#password')
   const confirmPasswordInput = formInput.querySelector('#confirmPassword')
   const messageSpan = formInput.querySelector('#message')
+  const submitBtn = formInput.querySelector('.btn-submit')
+
+  submitBtn.disabled = true
+  const password = passwordInput.value
+  const confirmPassword = confirmPasswordInput.value
+  const registrationFormData = {
+    password: password,
+    confirmPassword: confirmPassword,
+  }
+  console.log(registrationFormData)
   messageSpan.textContent = ''
   passwordInput.value = ''
   confirmPasswordInput.value = ''
@@ -34,10 +44,7 @@ function checkPasswordMatch() {
 
   const password = passwordInput.value
   const confirmPassword = confirmPasswordInput.value
-  const registrationFormData = {
-    password: password,
-    confirmPassword: confirmPassword,
-  }
+
   if (password === '' || confirmPassword === '') {
     messageSpan.textContent = ''
     submitBtn.disabled = true
@@ -50,7 +57,6 @@ function checkPasswordMatch() {
     messageSpan.textContent = 'Passwords do not match.'
     messageSpan.className = 'no-match'
   }
-  console.log(registrationFormData)
 
   passwordInput.addEventListener('input', checkPasswordMatch)
   confirmPasswordInput.addEventListener('input', checkPasswordMatch)
