@@ -4,6 +4,8 @@
   --default-radius: 0.4rem;
   --small-radius: 0.2rem;
   --color: rgb(3, 104, 192);
+  --textColor: #fff;
+  --bgColor: var(--textColor);
 }
 body {
   background: rgb(0, 0, 174);
@@ -22,11 +24,11 @@ body {
 }
 .form-wrapper {
   width: 400px;
-  background-color: #fff;
+  background-color: var(--bgColor);
   border-radius: var(--small-radius);
 }
 .header {
-  color: var(--color);
+  color: var(--textColor);
 }
 input {
   border-radius: var(--small-radius);
@@ -68,7 +70,20 @@ input:focus {
   /* border-style: none; */
   outline-color: rgb(181, 196, 245);
 }
+/* styles.css */
+.hidden {
+  display: none;
+}
 
+fieldset {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+legend {
+  padding: 0 5px;
+  font-weight: bold;
+}
 .message {
   display: none;
   color: red;
