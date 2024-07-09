@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 const formInput = document.querySelector('.form-registration')
-
+const minLength = 8
 // 3)focus on input when selesting the label
 formInput.addEventListener('click', () => {
   const labels = document.getElementsByTagName('label')
@@ -21,6 +21,7 @@ formInput.addEventListener('click', () => {
 
 formInput.addEventListener('submit', (e) => {
   e.preventDefault()
+  // Create references
   const nameInput = formInput.querySelector('#name')
   const userNameInput = formInput.querySelector('#username')
   const emailInput = formInput.querySelector('#email')
@@ -55,22 +56,32 @@ formInput.addEventListener('submit', (e) => {
   confirmPasswordInput.value = ''
 })
 
-// Check password and confirm
+// Fucntion to Check password and confirm
+
 function checkPasswordMatch() {
   const passwordInput = formInput.querySelector('#password')
   const confirmPasswordInput = formInput.querySelector('#confirmPassword')
-  const messageSpan = formInput.querySelector('#message')
-  const passwordSpan = formInput.querySelector('#passwordSpan')
-  const submitBtn = formInput.querySelector('.btn-submit')
 
   const password = passwordInput.value.trim()
   const confirmPassword = confirmPasswordInput.value.trim()
 
-  if (password === '' || confirmPassword === '') {
+  const messageSpan = formInput.querySelector('#message')
+  const passwordSpan = formInput.querySelector('#passwordSpan')
+  const submitBtn = formInput.querySelector('.btn-submit')
+
+  if (password.length < minLength) {
+    passwordSpan.textContent = 'Password must be at least 8 characters long.'
+    passwordSpan.className = 'short'
+    submitBtn.disabled = true
+  } else {
+    passwordSpan.textContent = ''
+  }
+
+  if (password === '' && confirmPassword === '') {
     messageSpan.textContent = ''
     passwordSpan.textContent = ''
     submitBtn.disabled = true
-  } else if (password.length < 8) {
+  } else if (password.length < minLength) {
     passwordSpan.textContent = 'Password must be at least 8 charachters long'
     passwordSpan.className = 'no-match'
   } else if (password === confirmPassword) {
